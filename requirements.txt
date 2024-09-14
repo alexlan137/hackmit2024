@@ -3,3 +3,7 @@ torchvision
 torchaudio
 openai-whisper
 pandas
+transformers
+accelerate
+bitsandbytes
+python-dotenv

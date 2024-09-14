@@ -17,3 +17,5 @@ CORE_PROMPT = "After reading the provided article, analyze the content from your
 
 def get_position_prompt(position):
     return POSITION_PROMPTS[position] + CORE_PROMPT
+
+AGG_PROMPT = "You have received insights from multiple agents, each representing a distinct political perspective. Your task is to review and synthesize their outputs to generate a non-biased, objective summary that considers all viewpoints. Ensure that you fairly represent the key arguments and concerns from each perspective, while also identifying any common ground or points of agreement. Where there are significant disagreements, clearly articulate the differing positions without favoring any one view. After presenting this balanced overview, take a reasoned stance on the topic, considering the strengths and weaknesses of each perspective, and justify your conclusion based on the collective insights."

@@ -1,0 +1,188 @@
+:root {
+  --xs: 0.22rem;
+  --s: 0.44rem;
+  --sm: 0.78rem;
+  --m: 0.89rem;
+  --mm: 1rem;
+  --l: 1.33rem;
+  --ll: 1.5rem;
+  --xl: 1.67rem;
+  --huge: 2.78rem;
+}
+
+/* with default 18px: */
+.u-xs {
+  /* 4px */
+  font-size: 0.22rem !important;
+}
+
+.u-s {
+  font-size: 0.44rem !important;
+}
+
+.u-sm {
+  font-size: 0.78rem !important;
+}
+
+.u-m {
+  font-size: 0.89rem !important;
+}
+
+.u-mm {
+  font-size: 1rem !important;
+}
+
+.u-mmm {
+  font-size: 1.17rem !important;
+}
+
+.u-l {
+  font-size: 1.33rem !important;
+}
+
+.u-ll {
+  font-size: 1.5rem !important;
+}
+
+.u-xl {
+  font-size: 1.67rem !important;
+}
+
+.u-huge {
+  font-size: 2.78rem !important;
+}
+
+/* utility classes; override everything else */
+.u-inline {
+  display: inline !important;
+}
+
+.u-block {
+  display: block !important;
+}
+
+.u-inline-block {
+  display: inline-block !important;
+}
+
+.u-width-fill {
+  width: 100% !important;
+}
+
+.u-height-fill {
+  height: 100% !important;
+}
+
+.u-width-fit {
+  width: fit-content !important;
+}
+
+.u-height-fit {
+  height: fit-content !important;
+}
+
+/* flexbox methods */
+
+.u-flex {
+  display: flex !important;
+}
+/* row by default */
+
+.u-flex-col {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.u-wrap {
+  flex-wrap: wrap !important;
+}
+
+.u-justify-center {
+  justify-content: center !important;
+}
+
+.u-align-center {
+  align-items: center !important;
+}
+
+.u-justify-start {
+  justify-content: flex-start !important;
+}
+
+.u-align-start {
+  align-items: flex-start !important;
+}
+
+.u-justify-end {
+  justify-content: flex-end !important;
+}
+
+.u-align-end {
+  align-items: flex-end !important;
+}
+
+.u-justify-space-between {
+  justify-content: space-between !important;
+}
+
+.u-align-space-between {
+  align-items: space-between !important;
+}
+
+.u-flex-center {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.u-flex-center-col {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+/* text */
+.linebreak-2 {
+  width: 100%;
+  height: 2vh;
+}
+
+.linebreak-1pt5 {
+  width: 100%;
+  height: 1.5vh;
+}
+
+.linebreak-1 {
+  width: 100%;
+  height: 1vh;
+}
+
+.linebreak-0pt5 {
+  width: 100%;
+  height: 0.5vh;
+}
+
+.u-bold {
+  font-weight: 600;
+}
+
+.u-text-center {
+  text-align: center;
+}
+
+.u-hide {
+  display: none !important;
+}
+
+.u-hide-but-keep-shape {
+  opacity: 0 !important;
+  cursor: default !important;
+}
+
+@media only screen and (max-width: 800px) {
+  .mobile-hide {
+    display: none !important;
+  }
+}

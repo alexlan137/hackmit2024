@@ -1,0 +1,180 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:normal");
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: "Open Sans", sans-serif;
+  font-size: 18px;
+}
+
+html,
+body {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+@media only screen and (max-width: 800px) {
+  /* more specific than original * */
+  * {
+    font-size: 14px;
+    -webkit-text-size-adjust: 100%;
+  }
+  /* this is so stupid, mobile browsers automatically scale up your text if they don't think it's big enough, which is why the academics page kept having typography issues. put in this webkit adjust command to fit it */
+}
+
+/* this contains both page and navbar; makes sure page is centered + setup right */
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  min-height: 100%;
+  background-color: #182038;
+  color: white;
+}
+
+.page-container {
+  width: 70vw;
+  min-width: 300px;
+  height: fit-content;
+  /* min-height: 70vh makes the page-container automatically extend to the bottom */
+  /* background-color: black; */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 5vh;
+}
+
+.page-container div {
+  width: 100%;
+}
+
+.styled-page-container {
+  background-color: rgba(255, 255, 255, 0.213);
+  width: 65vw;
+  min-width: 300px;
+  padding: 2.5vh 2.5vw;
+  border-radius: 10px;
+}
+
+@media only screen and (max-width: 800px) {
+  .page-container {
+    margin-top: 5vh;
+    width: 80vw;
+  }
+  .styled-page-container {
+    width: 75vw;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: rgb(7, 217, 179);
+}
+
+a:hover {
+  color: rgb(7, 94, 217);
+}
+
+p {
+  line-height: 140%;
+}
+
+hr {
+  color: white;
+}
+
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+/* both label and input/textarea are made block-level elements; so, we should put label/input in a horizontal flexbox to have them side-by side, vertical flexbox to have label on top */
+label {
+  display: block;
+  min-width: fit-content;
+}
+
+input {
+  display: block;
+  border-radius: 3px;
+  font-size: 0.89rem;
+  width: 100%;
+  /* height: 1rem; */
+}
+
+textarea {
+  display: block;
+  border-radius: 3px;
+  font-size: 0.89rem;
+  width: 100%;
+}
+
+.checkbox {
+  width: fit-content;
+}
+
+select {
+  display: block;
+}
+
+option {
+  height: fit-content;
+}
+
+button {
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+/* need "cursor: pointer" in order for pointer-hand cursor to appear when hovering over button! */
+
+button:hover {
+  opacity: 70%;
+}
+
+.default-button {
+  background: rgb(247, 122, 122);
+  color: white;
+  padding: 2vmin 2vmin;
+  margin: 0 0.5vw;
+  /* min-width: 10vw; */
+  width: fit-content;
+  /* min-height: 5vh; */
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+
+/* img-button: for buttons containing an image */
+.img-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+/* for div containing label + input, where label & input are side by side */
+.input-row {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* for div containing label + input, where label is on top of input */
+.input-col {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}

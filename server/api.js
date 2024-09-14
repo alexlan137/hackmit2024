@@ -22,3 +22,5 @@ router.get("/who_am_i", (req, res) => {
   }
   User.findById(req.user._id).then((user_doc) => res.send(user_doc));
 });
+
+module.exports = router;

@@ -27,12 +27,34 @@ router.get("/who_am_i", (req, res) => {
 });
 
 //main API endpoint; responds based on a prompt
-router.get("/run", auth.ensureLoggedIn, (req, res) => {
-  const prompt = req.prompt;
+router.get("/run", auth.ensureLoggedIn, async (req, res) => {
+  const { prompt, chat_id } = req.query;
   const model_endpoint = process.env.MODEL_ENDPOINT;
-  utilities.get(model_endpoint, { prompt: prompt }).then(({ article_link, output, data_all }) => {
-    res.send({ article_link: article_link, output: output, data_all: data_all });
+  const { article_link, output, data_all } = await utilities.get(model_endpoint, {
+    prompt: prompt,
   });
+  const response = utilities.formatPromptResponse(article_link, output, data_all);
+  let chat = await Chat.findById(chat_id);
+  if (!chat) {
+    const newChat = new Chat({
+      _id: chat_id,
+      user_id: req.user._id,
+      prompts: [],
+      data_all: [],
+    });
+    await newChat.save();
+  }
+  chat = await Chat.findById(chat_id);
+  const { prompts, responses } = chat;
+  prompts.push(prompt);
+  responses.push(response);
+  await Chat.updateOne({ _id: chat_id }, { $set: { prompts: prompts, responses: responses } });
+  res.send(response);
+});
+
+router.get("/chat_history", auth.ensureLoggedIn, async (req, res) => {
+  const chat_history = await Chat.find({ user_id: req.user._id.toString() });
+  res.send(chat_history);
 });
 
 module.exports = router;

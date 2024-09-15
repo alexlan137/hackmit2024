@@ -54,7 +54,23 @@ function post(endpoint, params = {}) {
     });
 }
 
+function formatPromptResponse(article_link, output, data_all) {
+  let res = `<p>Article link: <a href=${article_link}>${article_link}</a><br>`;
+  const linebreaked_output = output.replace(/\n/g, "<br>");
+  res += "<b>Aggregate output:</b> ";
+  res += linebreaked_output;
+  res += "<br>";
+  for (const { position, response } of data_all) {
+    res += `<b>${position}</b> perspective: `;
+    const linebreaked_response = response.replace(/\n/g, "<br>");
+    res += linebreaked_response;
+  }
+  res += "</p>";
+  return res;
+}
+
 module.exports = {
   get,
   post,
+  formatPromptResponse: formatPromptResponse,
 };

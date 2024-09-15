@@ -49,3 +49,4 @@ def execute(prompt):
             return (output, data_all)
         else:
             print("Failed to aggregate responses")
+            return ("", "")

@@ -1,3 +1,6 @@
+import requests
+import json
+
 POSITIONS = ['liberal', 'conservative', 'libertarian', 'green', 'populist', 'centrist', 'demsoc', 'nationalist', 'progressive', 'soccon']
 
 POSITION_PROMPTS = {
@@ -13,9 +16,37 @@ POSITION_PROMPTS = {
     'soccon': "You are a reader with a social conservative political perspective. Your worldview emphasizes traditional values, religious principles, and the preservation of established social norms. Focus on issues like the protection of the nuclear family, religious freedom, and opposition to rapidly changing cultural norms. When reading, interpret the text through the lens of maintaining social cohesion, defending traditional values, and preserving moral order.",
 }
 
-CORE_PROMPT = "After reading the provided article, analyze the content from your political perspective. Highlight key points that align or conflict with your worldview, and provide your opinion on how the issue should be addressed or interpreted based on your beliefs. Focus on areas where you agree or disagree with the presented viewpoints, and offer your insights into what the broader implications might be for society or policy. Your analysis will be summarized by an aggregator agent alongside other perspectives."
+CORE_PROMPT = "After reading the provided article, analyze the content from your political perspective. Highlight key points that align or conflict with your worldview, and provide your opinion on how the issue should be addressed or interpreted based on your beliefs. Focus on areas where you agree or disagree with the presented viewpoints, and offer your insights into what the broader implications might be for society or policy. Be concise in your response. Here is the article:"
 
 def get_position_prompt(position):
     return POSITION_PROMPTS[position] + CORE_PROMPT
 
-AGG_PROMPT = "You have received insights from multiple agents, each representing a distinct political perspective. Your task is to review and synthesize their outputs to generate a non-biased, objective summary that considers all viewpoints. Ensure that you fairly represent the key arguments and concerns from each perspective, while also identifying any common ground or points of agreement. Where there are significant disagreements, clearly articulate the differing positions without favoring any one view. After presenting this balanced overview, take a reasoned stance on the topic, considering the strengths and weaknesses of each perspective, and justify your conclusion based on the collective insights."
+AGG_PROMPT = "You have received comments from people across the political spectrum on an article they read online. First provide a detailed summary of the different positions. Then, try to come up with your own opinion on the topic based on the comments you have read, considering each opinion equally. Use a lot of detail when evaluating the different opinions of the various political perspectives. Here are the comments:"
+
+def execute(prompt):
+    with open("data/debate/ap.txt", "r") as f:
+            prompt = f.read()
+
+    ALL_PROMPTS = []
+    for position in POSITIONS:
+        ALL_PROMPTS.append(get_position_prompt(position) + prompt)
+
+    data = {"prompts": ALL_PROMPTS}
+    responses = requests.post("https://alexlan137--meta-llama-3-8b-instruct-web-dev.modal.run", json=data)
+    if responses.status_code == 200:
+        data_all = responses.json()
+        aggregated_prompt = AGG_PROMPT + '\n\n'.join(data_all)
+        if len(aggregated_prompt) > 4096: # truncate
+            aggregated_prompt = aggregated_prompt[:4090]
+        agg_input = {"prompts": [aggregated_prompt]}
+        agg_response = requests.post("https://alexlan137--meta-llama-3-8b-instruct-web-dev.modal.run", json=agg_input)
+        if agg_response.status_code == 200:
+            agg_data = agg_response.json()
+            print(agg_data[0])
+            output = {
+                "status": "success",
+                "output": agg_data,
+            }
+            return output
+        else:
+            print("Failed to aggregate responses")

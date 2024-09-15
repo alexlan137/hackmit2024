@@ -1,14 +1,11 @@
-// src/Grid.js
 import React, {useState} from 'react';
 import '../stylesheets/grid.css';
-import { useNavigate } from 'react-router-dom';
-import photo1 from "../photos/debate.jpg";
-import photo2 from "../photos/interest.jpg"
+import { Link } from 'react-router-dom';
 
 const Grid = () => {
   const items = [
-    { src: photo1, title: 'Presidential Debate', text: 'Donald Trump vs. Kamala Harris debate goes viral - conflicting views on the recent presidential debate raises concerns over...' },
-    { src: photo2, title: 'Interest Rates', text: "Central Bank Raises Interest Rates in a Bold Move to Combat Inflation. The new rate hike will impact borrowing costs..." },
+    { src: "https://www.livemint.com/lm-img/img/2024/09/11/600x338/AP09-11-2024-000003B-0_1726024287672_1726024301546.jpg", title: 'Presidential Debate', text: 'Donald Trump vs. Kamala Harris debate goes viral - conflicting views on the recent presidential debate raises concerns over...' },
+    { src: "https://www.bankatfirst.com/content/dam/bankatfirst/personal/discover/flourish/interest-rates-rising-article-1536x755.jpg", title: 'Interest Rates', text: "Central Bank Raises Interest Rates in a Bold Move to Combat Inflation. The new rate hike will impact borrowing costs..." },
     { src: 'https://a57.foxnews.com/static.foxbusiness.com/foxbusiness.com/content/uploads/2021/05/1862/1012/Credible-home-mortgage-rate-iStock-640163076.jpg?ve=1&tl=1', title: 'Mortgage Rates', text: 'When applying for a home loan, one of the most important factors you should pay attention to is your interest rate. Having...' },
     { src: 'https://www.ft.com/__origami/service/image/v2/images/raw/ftcms%3Ab51b0bf4-b4fe-11e8-a1d8-15c2dd1280ff?source=next-article&fit=scale-down&quality=highest&width=700&dpr=2', title: 'US-China Trade War', 
       text: "Trade wars are good, and easy to win. Donald Trump's breezy tweet of last..." },
@@ -22,7 +19,12 @@ const Grid = () => {
   const [popupContent, setPopUpContent] = useState(null);
 
   const handleclick = (details) => {
-    setPopUpContent(details);
+    <nav className="nav">
+      <ul>
+        <li><Link to="/">Article</Link></li>
+      </ul>
+    </nav>
+    // setPopUpContent(details);
   };
 
   const handleclose = () => {
@@ -31,8 +33,8 @@ const Grid = () => {
 
   return (
     <div className="grid-container">
-      <h1 className ="page-title">Recent Reads</h1> {}
-      <h1 className="page-subtitle">Discovering Politics in an Unbiased Way</h1> {}
+      <h1 className ="page-title">Porfolio of Articles</h1> {}
+      <h1 className="page-subtitle">Center for thoughts & research</h1> {}
       <div className="grid">
       {items.map((item, index) => (
         <button className="grid-item" onClick={() => handleclick(item.text)} key={index}>

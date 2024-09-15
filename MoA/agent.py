@@ -52,8 +52,8 @@ class Agent:
         assert model_id in avail_models.keys(), f"Model {model_id} not available. Choose from {avail_models.keys()}"
         model_id = avail_models[model_id]
         quant_config = BitsAndBytesConfig(load_in_8bit=True)
-        model = AutoModelForCausalLM.from_pretrained(model_id, quantization_config=quant_config, device_map=device_map, use_auth_token=hf_token)
-        tokenizer = AutoTokenizer.from_pretrained(model_id, use_auth_token=hf_token)
+        model = AutoModelForCausalLM.from_pretrained(model_id, quantization_config=quant_config, device_map=device_map, token=hf_token)
+        tokenizer = AutoTokenizer.from_pretrained(model_id, token=hf_token)
         
         return pipeline(
             "text-generation",
@@ -75,7 +75,7 @@ class Agent:
                 result = self.pipe(
                     messages,
                     truncation=True,
-                    max_length=2048,
+                    max_length=8192,
                     num_return_sequences=1,
                     temperature=0.8,
                     top_k=50,
@@ -154,13 +154,11 @@ def MoA_main():
 
     world_size = len(agents)
     
+    with open("data/debate/ap.txt", "r") as f:
+        prompt = f.read()
+
     prompts = [
-        "What is the meaning of life?",
-        "Can you explain how oxidation reactions work?",
-        "Why do large language models follow a scaling law?",
-        "What is Rene Girard's philosophy?",
-        "What is the best way to cook a steak?",
-        "Explain how a particle accelerator works.",
+        prompt,
         "^C",
     ]
     

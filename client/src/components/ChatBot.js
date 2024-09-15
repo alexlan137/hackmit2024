@@ -18,21 +18,21 @@ function ChatBot() {
     };
 
     return (
-        <div className="chatbot">
-            <div className="chatbot-messages">
-                {messages.map((msg, index) => (
-                    <Message key={index} text={msg.text} isUser={msg.isUser} />
-                ))}
-            </div>
-            <div className="chatbot-input">
-                <input
-                    type="text"
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                    onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-                    placeholder="Type a message..."
-                />
-                <button onClick={handleSend}>Send</button>
+        <div className="message-container">
+            {messages.map((msg, index) => (
+                <Message key={index} text={msg.text} isUser={msg.isUser} />
+            ))}
+            <div className="chatbot-container">
+                <div className="chatbot-input">
+                    <input
+                        type="text"
+                        value={input}
+                        onChange={(e) => setInput(e.target.value)}
+                        onKeyDown={(e) => e.key === 'Enter' && handleSend()}
+                        placeholder="Type a message..."
+                    />
+                    <button onClick={handleSend}>Send</button>
+                </div>
             </div>
         </div>
     );

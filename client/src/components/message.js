@@ -3,9 +3,8 @@ import '../stylesheets/ChatBot.css';
 
 function Message({ text, isUser }) {
     return (
-        <div className={`message ${isUser ? 'user' : 'bot'}`}>
-            {text}
-        </div>
+            <div className={`message ${isUser ? 'user' : 'bot'}`}>
+            {text} </div>
     );
 }
 

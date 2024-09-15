@@ -8,11 +8,9 @@ const ChatLayout = () => {
       <div className='chat'>
         <div className='row'>
           <div className='left-column'>
-            Some Text in Column One
           </div>
           <div className='middle-column'>
             <h2 className='middle-column-title'>Chat now</h2>
-            <h3 className='middle-column-subtitle'>The latest unbiased news at your fingertips</h3>
             <ChatBot />
           </div>
           <div className='right-column'>

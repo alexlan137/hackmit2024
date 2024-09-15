@@ -37,14 +37,14 @@
 
   .middle-column {
     flex: 2;
-    background-color: rgb(205, 205, 205);
+    background-color: white;
     width: 50%;
   }
 
   .middle-column-title {
-    font-size: 40px;
-    font-weight: bold;
-    color: #555555;
+    font-size: 45px;
+    font-weight: 400;
+    color: black;
     margin-bottom: 10px;
     text-align: center;
     padding-bottom: 10px;

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../stylesheets/chat.css';
+import '../stylesheets/ChatBot.css';
 
 function Message({ text, isUser }) {
     return (

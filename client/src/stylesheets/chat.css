@@ -1,0 +1,20 @@
+
+
+.chatbot {
+    font: large;
+    background-color: navy;
+}
+
+.chatbot-input {
+    font: large;
+    background-color: black;
+}
+
+.chatbot-input button:hover{
+    background-color: grey;
+}
+
+.message {
+    padding: 10px;
+    color: black;
+}

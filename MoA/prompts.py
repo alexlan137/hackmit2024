@@ -28,7 +28,8 @@ def execute(prompt):
 
     ALL_PROMPTS = []
     for position in POSITIONS:
-        ALL_PROMPTS.append(get_position_prompt(position) + prompt)
+        fullprompt = get_position_prompt(position) + prompt
+        ALL_PROMPTS.append(fullprompt[:4090]) # truncate
 
     data = {"prompts": ALL_PROMPTS}
     responses = requests.post("https://alexlan137--meta-llama-3-8b-instruct-web-dev.modal.run", json=data)

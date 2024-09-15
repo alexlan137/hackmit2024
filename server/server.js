@@ -14,8 +14,6 @@ const mongoConnectionURI = process.env.MONGO_SRV;
 const databaseName = "Database";
 mongoose
   .connect(mongoConnectionURI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
     dbName: databaseName,
   })
   .then(() => console.log("Connected to MongoDB"))

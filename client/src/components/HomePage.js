@@ -6,9 +6,9 @@ import image from "../../dist/assets/rotating_globe.png";
 const HomePage = () => {
   return (
     <div className="home-page-container">
-      <h1 className="title">clarity.ai</h1>
-      <p className="subheader">debiasing modern media</p>
-      <Link to="/chat" className="button">
+      <h1 className="title">Clarity.ai</h1>
+      <p className="subheader">debiasing modern media.</p>
+      <Link to="/chat/new_chat" className="button">
         GET STARTED
       </Link>
       <div className="image-container">

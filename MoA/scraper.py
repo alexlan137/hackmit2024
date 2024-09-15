@@ -1,15 +1,18 @@
 import requests
 from bs4 import BeautifulSoup
-
-#go through the top k most relevant search results
-#return array of the text for each one
+import os
+from dotenv import load_dotenv
+from pathlib import Path
 
 error_str = "__error__"
+
+script_dir = Path(__file__).parent
+load_dotenv(script_dir/"../.env")
 
 def ExtractText(url):
     headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36"}
     try:
-        response = requests.get(url, headers=headers, allow_redirects=True, timeout=3)
+        response = requests.get(url, headers=headers, allow_redirects=True, timeout=2)
         response.raise_for_status()
         #parse html content and extract text
         soup = BeautifulSoup(response.content, "html.parser")
@@ -22,10 +25,10 @@ def ExtractText(url):
 #use the Google Programmable Search Engine API
 #return the top k results for search query, from which we can extract text. Note: we only look at first page
 def Scrape(search_query, k):
-    API_KEY = "AIzaSyAuUsgPIud8zD8srZl4pVgGMoM5eUo1swU"
-    CSE_ID = "53b5546316d3649ab" #custom search engine ID
+    api_key = os.getenv("CSE_API_KEY")
+    cse_id = os.getenv("CSE_ID")
     ENDPOINT_URL = "https://www.googleapis.com/customsearch/v1"
-    query_params = {"key": API_KEY, "cx": CSE_ID, "q": search_query}
+    query_params = {"key": api_key, "cx": cse_id, "q": search_query}
 
     try:
         response = requests.get(ENDPOINT_URL, params=query_params)
@@ -36,10 +39,8 @@ def Scrape(search_query, k):
 
         meta = response_json["searchInformation"]
         links = [item["link"] for item in response_json["items"]] #Ordered by relevance
-        print(links)
         link_texts = []
         for link in links:
-            print(link)
             text = ExtractText(link)
             if text != error_str:
                 link_texts.append(text)
@@ -49,3 +50,5 @@ def Scrape(search_query, k):
     except Exception as err:
         print(f"An error occured when scraping: {err}")
         return []
+
+# print(Scrape("what are the best countries", 3))

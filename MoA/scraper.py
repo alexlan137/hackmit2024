@@ -39,11 +39,11 @@ def Scrape(search_query, k):
 
         meta = response_json["searchInformation"]
         links = [item["link"] for item in response_json["items"]] #Ordered by relevance
-        link_texts = []
+        link_texts = [] #list of pairs (link, text)
         for link in links:
             text = ExtractText(link)
             if text != error_str:
-                link_texts.append(text)
+                link_texts.append((link, text))
             if len(link_texts) >= k:
                 break
         return link_texts
@@ -51,4 +51,6 @@ def Scrape(search_query, k):
         print(f"An error occured when scraping: {err}")
         return []
 
-# print(Scrape("what are the best countries", 3))
+res = Scrape("israel palestine conflict from a right-wing perspective", 5)
+for x in res:
+    print(x)

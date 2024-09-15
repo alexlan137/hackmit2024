@@ -18,10 +18,7 @@ const Header = ({ loggedIn, handleLogin, handleLogout }) => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/about">Portfolio</Link>
-          </li>
-          <li>
-            <Link to="/services">Article</Link>
+            <Link to="/portfolio">Portfolio</Link>
           </li>
           <li>
             <Link to="/chat">Chat</Link>

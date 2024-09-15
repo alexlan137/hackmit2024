@@ -1,5 +1,10 @@
 
 .article-container {
     padding: 10%;
-    background-color: blue;
+    background-color: white;
+}
+
+.article-title {
+    font-weight: 10px;
+    color: black;
 }

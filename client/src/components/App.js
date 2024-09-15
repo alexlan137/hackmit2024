@@ -10,7 +10,6 @@ import "../utilities.css";
 import { get, post } from "../utilities.js";
 
 import HomePage from "./HomePage.js";
-import Nav from "./nav.js";
 import Header from "./Header.jsx";
 import Footer from "./Footer.jsx";
 import Grid from "./grid.js";
@@ -42,13 +41,15 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <Header />
       <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
-        <Nav loggedIn={Boolean(user._id)} handleLogin={handleLogin} handleLogout={handleLogout} />
+        <Header
+          loggedIn={Boolean(user._id)}
+          handleLogin={handleLogin}
+          handleLogout={handleLogout}
+        />
         <Routes>
           <Route path="/" element={<HomePage loggedIn={Boolean(user._id)} user={user} />} />
           <Route path="/portfolio" element={<Grid/>} />
-          <Route path="/article" element={<Article/>} />
           <Route path="/chat" element={<HomePage/>} />
           <Route path="/login" element={<HomePage/>} />
         </Routes>

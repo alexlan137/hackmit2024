@@ -1,13 +1,16 @@
 import React from "react";
 import "../stylesheets/article.css"
+import { useLocation } from 'react-router-dom';
 
-const Article = ({ loggedIn, user }) => {
-    const curr_article = [
-        {title: "Hello world!", body: "This is my current article"}
-    ]
+const Article = () => {
+  const location = useLocation();
+  const { state } = location;
+
+  const { loggedIn, user, article } = state || {};
+
   return <div className="article-container">
-    <h1 className="article-title"> This Article</h1> {}
-    <h1 className="article-subtitle"> Subtitle</h1>
+    <h1 className="article-title"> {article?.title || "Default Title"} </h1>
+    <h2 className="article-subtitle"> {link} </h2>
     <div className="article">
         <h1>{curr_article.title}</h1>
     </div>

@@ -1,0 +1,22 @@
+.footer {
+    width: 100vw;
+    background-color: rgb(154, 151, 151); /* White background color */
+    padding: 20px 0; /* Vertical padding */
+    text-align: center; /* Center align text */
+    position: sticky; /* Position relative for any absolute positioning if needed */
+  }
+
+  .footer-content {
+    max-width: 800px; /* Optional: limit the width of the content */
+    margin: 0 auto; /* Center the content */
+  }
+
+  .company-name {
+    font-size: 1.5rem; /* Adjust the font size as needed */
+    margin: 0; /* Remove default margin */
+  }
+
+  .copyright {
+    font-size: 1rem; /* Adjust the font size as needed */
+    margin: 5px 0 0; /* Add some margin above the copyright */
+  }

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Message from './Message';
-import '../stylesheets/chat.css'; // Add CSS styles for chatbot
+import '../stylesheets/ChatBot.css'; // Add CSS styles for chatbot
 
-function chat() {
+function ChatBot() {
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState('');
 
@@ -38,4 +38,4 @@ function chat() {
     );
 }
 
-export default chat;
+export default ChatBot;

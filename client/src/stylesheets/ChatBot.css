@@ -2,12 +2,13 @@
 
 .chatbot {
     font: large;
-    background-color: navy;
+    background-color: pink;
 }
 
 .chatbot-input {
     font: large;
-    background-color: black;
+    background-color: white;
+    padding: 50%;
 }
 
 .chatbot-input button:hover{
@@ -16,5 +17,5 @@
 
 .message {
     padding: 10px;
-    color: black;
+    color: white;
 }

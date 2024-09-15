@@ -14,6 +14,7 @@ import Header from "./Header.jsx";
 import Footer from "./Footer.jsx";
 import Grid from "./grid.js";
 import Article from "./article.js";
+import ChatLayout from "./ChatLayout.jsx"
 
 const GOOGLE_CLIENT_ID = "363037912379-0hk5ir8ntacgscrv0j3a3vkn2d4l8eef.apps.googleusercontent.com";
 
@@ -50,12 +51,11 @@ const App = () => {
         <Routes>
           <Route path="/" element={<HomePage loggedIn={Boolean(user._id)} user={user} />} />
           <Route path="/portfolio" element={<Grid/>} />
-          <Route path="/chat" element={<HomePage/>} />
+          <Route path="/chat" element={<ChatLayout/>} />
           <Route path="/login" element={<HomePage/>} />
         </Routes>
         <Footer />
       </GoogleOAuthProvider>
-      <Footer />
     </BrowserRouter>
   );
 };

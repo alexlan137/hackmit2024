@@ -6,9 +6,9 @@ import image from '../../dist/assets/rotating_globe.png';
 const HomePage = () => {
   return (
     <div className="home-page-container">
-      <h1 className="title">Single Source of Truth</h1>
-      <p className="subheader">Unbiasing today's media</p>
-      <Link to="/chat" className="button">ACCESS NOW</Link>
+      <h1 className="title">clarity.ai</h1>
+      <p className="subheader">unbiasing today's media</p>
+      <Link to="/chat" className="button">ACCESS</Link>
       <div className="image-container">
         <img src={image} alt="Main home page img" className="image" />
       </div>

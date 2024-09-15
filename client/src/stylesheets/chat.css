@@ -10,8 +10,8 @@
   .row {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     width: 100%;
+    max-width: 1200px; /* Adjust as needed */
   }
 
   .left-column,
@@ -19,24 +19,37 @@
   .right-column {
     padding-top: 5vh;
     padding-left: 15px;
+    padding-right: 15px;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    flex: 1;
+    justify-content: flex-start;
     height: 82vh;
   }
 
-  .left-column {
+  .left-column,
+  .right-column {
+    flex: 1;
     background-color: #e8e8e8;
     width: 25%;
   }
 
   .middle-column {
+    flex: 2;
     background-color: rgb(205, 205, 205);
     width: 50%;
   }
 
-  .right-column {
-    background-color: #e8e8e8;
-    width: 25%;
+  .middle-column-title {
+    font-size: 60px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .middle-column-subtitle {
+    font-size: 18px;
+    margin-bottom: 20px;
+    text-align: center;
   }

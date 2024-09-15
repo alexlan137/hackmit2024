@@ -3,7 +3,7 @@ const User = require("./models/user.js");
 
 // create a new OAuth client used to verify google sign-in
 //this is ok (not a security risk) because only selected URLs may access this client ID
-const CLIENT_ID = "954844909530-hvosmig1l5f9j86o7vn7cmhh6r3sou05.apps.googleusercontent.com";
+const CLIENT_ID = "363037912379-0hk5ir8ntacgscrv0j3a3vkn2d4l8eef.apps.googleusercontent.com";
 const client = new OAuth2Client(CLIENT_ID);
 
 // accepts a login token from the frontend, and verifies that it's legit

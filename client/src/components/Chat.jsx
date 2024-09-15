@@ -9,6 +9,8 @@ const Chat = () => {
             Some Text in Column One
           </div>
           <div className='middle-column'>
+            <h2 className='Chat now'>Title</h2>
+            <h3 className='middle-column-subtitle'>Subtitle</h3>
             Some Text in Column Two
           </div>
           <div className='right-column'>
@@ -19,4 +21,4 @@ const Chat = () => {
     );
   };
 
-  export default Chat;
+export default Chat;

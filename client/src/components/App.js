@@ -11,8 +11,8 @@ import { get, post } from "../utilities.js";
 
 import HomePage from "./HomePage.js";
 import Nav from "./nav.js";
-import Header from "./Header.jsx"
-import Footer from "./Footer.jsx"
+import Header from "./Header.jsx";
+import Footer from "./Footer.jsx";
 
 const GOOGLE_CLIENT_ID = "363037912379-0hk5ir8ntacgscrv0j3a3vkn2d4l8eef.apps.googleusercontent.com";
 

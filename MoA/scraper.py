@@ -50,7 +50,3 @@ def Scrape(search_query, k):
     except Exception as err:
         print(f"An error occured when scraping: {err}")
         return []
-
-res = Scrape("israel palestine conflict from a right-wing perspective", 5)
-for x in res:
-    print(x)

@@ -1,7 +1,7 @@
 import React from 'react';
-import '../stylesheets/ChatLayout.css';
+import '../stylesheets/Chat.css';
 
-const ChatLayout = () => {
+const Chat = () => {
     return (
       <div className='chat'>
         <div className='row'>
@@ -9,8 +9,8 @@ const ChatLayout = () => {
             Some Text in Column One
           </div>
           <div className='middle-column'>
-            <h2 className='middle-column-title'>Chat now</h2>
-            <h3 className='middle-column-subtitle'>The latest unbiased news at your fingertips</h3>
+            <h2 className='Chat now'>Title</h2>
+            <h3 className='middle-column-subtitle'>Subtitle</h3>
             Some Text in Column Two
           </div>
           <div className='right-column'>
@@ -21,4 +21,4 @@ const ChatLayout = () => {
     );
   };
 
-export default ChatLayout;
+export default Chat;

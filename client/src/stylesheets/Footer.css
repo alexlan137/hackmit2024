@@ -1,27 +1,29 @@
-  .footer {
-    width: 100vw;
-    background-color: rgb(154, 151, 151); /* White background color */
-    padding: 20px 0; /* Vertical padding */
-    text-align: center; /* Center align text */
-  }
+.footer {
+  width: 100vw;
+  height: 5vh;
+  background-color: rgb(154, 151, 151); /* White background color */
+  padding: 0;
+  margin: 0;
+  text-align: center; /* Center align text */
+}
 
-  .page-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
-  .footer-content {
-    max-width: 800px; /* Optional: limit the width of the content */
-    margin: 0 auto; /* Center the content */
-  }
+.footer-content {
+  max-width: 800px; /* Optional: limit the width of the content */
+  margin: 0 auto; /* Center the content */
+}
 
-  .company-name {
-    font-size: 1.5rem; /* Adjust the font size as needed */
-    margin: 0; /* Remove default margin */
-  }
+.company-name {
+  font-size: 1.5rem; /* Adjust the font size as needed */
+  margin: 0; /* Remove default margin */
+}
 
-  .copyright {
-    font-size: 1rem; /* Adjust the font size as needed */
-    margin: 5px 0 0; /* Add some margin above the copyright */
-  }
+.copyright {
+  font-size: 1rem; /* Adjust the font size as needed */
+  margin: 5px 0 0; /* Add some margin above the copyright */
+}

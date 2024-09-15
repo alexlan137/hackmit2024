@@ -11,6 +11,7 @@
 html,
 body {
   height: 100%;
+  max-width: 100%;
   background-color: black;
   scroll-behavior: smooth;
 }
@@ -33,7 +34,8 @@ body {
   width: 100%;
   min-height: 100%;
   background-color: #ffff;
-  color: white;
+  color: black;
+  box-sizing: border-box;
 }
 
 .page-container {
@@ -42,7 +44,7 @@ body {
   height: fit-content;
   /* min-height: 70vh makes the page-container automatically extend to the bottom */
   /* background-color: black; */
-  color: white;
+  color: black;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -86,7 +88,7 @@ p {
 }
 
 hr {
-  color: white;
+  color: black;
 }
 
 img {

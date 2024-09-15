@@ -21,7 +21,7 @@ const Header = ({ loggedIn, handleLogin, handleLogout }) => {
             <Link to="/portfolio">Portfolio</Link>
           </li>
           <li>
-            <Link to="/chat">Chat</Link>
+            <Link to="/chat/new_chat">Chat</Link>
           </li>
           {loggedIn ? (
             <button

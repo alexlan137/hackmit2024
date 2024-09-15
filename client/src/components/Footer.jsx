@@ -3,9 +3,8 @@ import "../stylesheets/Footer.css"; // We'll create this next
 
 const Footer = () => {
   return (
-    <div className="footer">
-        <h2 className="company-name">clarity.ai</h2>
-        <p className="copyright">© 2024</p>
+    <div className="footer u-flex-col u-justify-center">
+      <p className="copyright">clarity.ai © 2024. All rights reserved.</p>
     </div>
   );
 };

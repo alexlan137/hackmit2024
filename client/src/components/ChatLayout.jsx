@@ -1,54 +1,58 @@
-import React from 'react';
-import '../stylesheets/ChatLayout.css';
-import ChatBot from './ChatBot.js';
-import '../stylesheets/ChatBot.css';
+import React, { useState, useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
+import "../stylesheets/ChatLayout.css";
+import ChatBot from "./ChatBot.js";
+import "../stylesheets/ChatBot.css";
+import { get } from "../utilities.js";
+import NotLoggedIn from "./not_logged_in.js";
 
-const ChatLayout = () => {
+const Library = ({ user }) => {
+  const [chats, setChats] = useState([]);
+
+  const GetChatLink = ({ chat_name, chat_id }) => {
     return (
-      <div className='chat'>
-        <div className='row'>
-          <div className='left-column'>
-          <h1 className="right-column-title">Library</h1>
-          <div className="subtitle-section">
-              <p className="hover-text">Trump-Harris debate</p>
-            </div>
-            <div className="subtitle-section">
-              <p className="hover-text">Climate change lawsuit</p>
-            </div>
-            <div className="subtitle-section">
-              <p className="hover-text">Gun control</p>
-            </div>
-            <div className="subtitle-section">
-              <p className="hover-text">Healthcare reform</p>
-            </div>
-            <div className="subtitle-section">
-              <p className="hover-text">Waivers for DACA</p>
-            </div>
-          </div>
-          <div className='middle-column'>
-            <h2 className='middle-column-title'>Chat now</h2>
-            <ChatBot />
-          </div>
-          <div className='right-column'>
-            <h1 className="right-column-title">Trending Topics</h1>
-            <div className="subtitle-section">
-              <h2 className="right-subtitle">Google Ad Auction Technology</h2>
-              <p className="right-subtitle-text">Can you summarize the key points of the antitrust case against Google regarding its ad auction technology?</p>
-            </div>
-            <div className='hr'/>
-            <div className="subtitle-section">
-              <h2 className="right-subtitle">Boeing Worker Strike</h2>
-              <p className="right-subtitle-text">What are the main reasons behind the ongoing Boeing strike, and what are the workers and union leaders demanding?</p>
-            </div>
-            <div className='hr'/>
-            <div className="subtitle-section">
-              <h2 className="right-subtitle">NYPD Commissioner Resigns</h2>
-              <p className="right-subtitle-text">Can you provide details on the recent resignation of New York City Police Commissioner Edward Caban?</p>
-            </div>
-          </div>
-        </div>
+      <div className="subtitle-section">
+        <Link to={`/chat/${chat_id}`}>{chat_name}</Link>
+        <br />
       </div>
     );
+  };
+
+  useEffect(() => {
+    get("/api/chat_history").then((chat_headers) => {
+      setChats(chat_headers.map(GetChatLink));
+    });
+  }, []);
+
+  return (
+    <div className="left-column">
+      <h1 className="right-column-title">Library</h1>
+      <div className="subtitle-section">
+        {chats}
+        <br />
+      </div>
+    </div>
+  );
+};
+
+const ChatLayout = ({ user }) => {
+  const { chatID } = useParams();
+
+  if (!user._id) return <NotLoggedIn />;
+
+  return (
+    <div className="chat">
+      <div className="row">
+        <div className="left-column">
+          <Library user={user} />
+        </div>
+        <div className="middle-column">
+          <h2 className="middle-column-title">Chat now</h2>
+          <ChatBot props_chat_id={chatID} />
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default ChatLayout;

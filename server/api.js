@@ -27,20 +27,33 @@ router.get("/who_am_i", (req, res) => {
 });
 
 //main API endpoint; responds based on a prompt
-router.get("/run", auth.ensureLoggedIn, async (req, res) => {
-  const { prompt, chat_id } = req.query;
+router.post("/prompt", auth.ensureLoggedIn, async (req, res) => {
+  const { prompt, chat_id } = req.body;
+  console.log(prompt, chat_id);
+  if (chat_id == "new_chat") {
+    //chat_id cannot be "new_chat"
+    res.send({});
+    return;
+  }
   const model_endpoint = process.env.MODEL_ENDPOINT;
-  const { article_link, output, data_all } = await utilities.get(model_endpoint, {
-    prompt: prompt,
-  });
-  const response = utilities.formatPromptResponse(article_link, output, data_all);
+  let article_link, output, data_all;
+  try {
+    ({ article_link, output, data_all } = await utilities.get(model_endpoint, {
+      prompt: prompt,
+    }));
+  } catch (error) {
+    console.error("Error occurred while processing prompt:", error);
+    res.send({});
+    return;
+  }
+  const response = { article_link: article_link, output: output, data_all: data_all };
   let chat = await Chat.findById(chat_id);
   if (!chat) {
     const newChat = new Chat({
       _id: chat_id,
       user_id: req.user._id,
       prompts: [],
-      data_all: [],
+      responses: [],
     });
     await newChat.save();
   }
@@ -49,12 +62,27 @@ router.get("/run", auth.ensureLoggedIn, async (req, res) => {
   prompts.push(prompt);
   responses.push(response);
   await Chat.updateOne({ _id: chat_id }, { $set: { prompts: prompts, responses: responses } });
-  res.send(response);
+  res.send({ response: response });
+});
+
+router.get("/chat", auth.ensureLoggedIn, async (req, res) => {
+  const chat_id = req.query.chat_id;
+  const chat = await Chat.findById(chat_id);
+  if (!chat) {
+    res.send({});
+    return;
+  }
+  res.send(chat);
 });
 
 router.get("/chat_history", auth.ensureLoggedIn, async (req, res) => {
-  const chat_history = await Chat.find({ user_id: req.user._id.toString() });
-  res.send(chat_history);
+  const chats = await Chat.find({ user_id: req.user._id.toString() }).sort({
+    timestamp: -1,
+  });
+  const chat_headers = chats.map((chat) => {
+    return { chat_name: chat.timestamp.toString(), chat_id: chat._id };
+  });
+  res.send(chat_headers);
 });
 
 module.exports = router;

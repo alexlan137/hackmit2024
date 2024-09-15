@@ -26,7 +26,6 @@ const Header = ({ loggedIn, handleLogin, handleLogout }) => {
           {loggedIn ? (
             <button
               onClick={() => {
-                // googleLogout();
                 handleLogout();
                 navigate("/");
               }}

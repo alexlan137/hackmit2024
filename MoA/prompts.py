@@ -23,9 +23,8 @@ def get_position_prompt(position):
 
 AGG_PROMPT = "You have received comments from people across the political spectrum on an article they read online. First provide a detailed summary of the different positions. Then, try to come up with your own opinion on the topic based on the comments you have read, considering each opinion equally. Use a lot of detail when evaluating the different opinions of the various political perspectives. Here are the comments:"
 
+#takes article text as input
 def execute(prompt):
-    with open("data/debate/ap.txt", "r") as f:
-            prompt = f.read()
 
     ALL_PROMPTS = []
     for position in POSITIONS:
@@ -47,6 +46,6 @@ def execute(prompt):
                 "status": "success",
                 "output": agg_data,
             }
-            return output
+            return (output, data_all)
         else:
             print("Failed to aggregate responses")

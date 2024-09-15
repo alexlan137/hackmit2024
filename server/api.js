@@ -1,7 +1,10 @@
 const express = require("express");
 const auth = require("./auth.js");
+const utilities = require("./utilities.js");
 
 const User = require("./models/user.js");
+const Chat = require("./models/chat.js");
+require("dotenv").config();
 
 const router = express.Router();
 
@@ -21,6 +24,15 @@ router.get("/who_am_i", (req, res) => {
     return;
   }
   User.findById(req.user._id).then((user_doc) => res.send(user_doc));
+});
+
+//main API endpoint; responds based on a prompt
+router.get("/run", auth.ensureLoggedIn, (req, res) => {
+  const prompt = req.prompt;
+  const model_endpoint = process.env.MODEL_ENDPOINT;
+  utilities.get(model_endpoint, { prompt: prompt }).then(({ article_link, output, data_all }) => {
+    res.send({ article_link: article_link, output: output, data_all: data_all });
+  });
 });
 
 module.exports = router;

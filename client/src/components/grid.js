@@ -2,21 +2,24 @@
 import React, {useState} from 'react';
 import '../stylesheets/grid.css';
 import { useNavigate } from 'react-router-dom';
+import photo1 from "../photos/debate.jpg";
+import photo2 from "../photos/interest.jpg"
 
 const Grid = () => {
   const items = [
-    { src: 'https://via.placeholder.com/150', title: 'Presidential Debate', text: 'Donald Trump vs. Kamala Harris debate goes viral - conflicting views on the recent presidential debate raises concerns over...' },
-    { src: 'https://via.placeholder.com/150', title: 'Title 2', text: 'Description 2' },
-    { src: 'https://via.placeholder.com/150', title: 'Title 3', text: 'Description 3' },
-    { src: 'https://via.placeholder.com/150', title: 'Title 4', text: 'Description 4' },
-    { src: 'https://via.placeholder.com/150', title: 'Title 4', text: 'Description 4' },
-    { src: 'https://via.placeholder.com/150', title: 'Title 4', text: 'Description 4' },
-    { src: 'https://via.placeholder.com/150', title: 'Title 4', text: 'Description 4' },
-    { src: 'https://via.placeholder.com/150', title: 'Title 4', text: 'Description 4' },
-    { src: 'https://via.placeholder.com/150', title: 'Title 4', text: 'Description 4' },
+    { src: photo1, title: 'Presidential Debate', text: 'Donald Trump vs. Kamala Harris debate goes viral - conflicting views on the recent presidential debate raises concerns over...' },
+    { src: photo2, title: 'Interest Rates', text: "Central Bank Raises Interest Rates in a Bold Move to Combat Inflation. The new rate hike will impact borrowing costs..." },
+    { src: 'https://a57.foxnews.com/static.foxbusiness.com/foxbusiness.com/content/uploads/2021/05/1862/1012/Credible-home-mortgage-rate-iStock-640163076.jpg?ve=1&tl=1', title: 'Mortgage Rates', text: 'When applying for a home loan, one of the most important factors you should pay attention to is your interest rate. Having...' },
+    { src: 'https://www.ft.com/__origami/service/image/v2/images/raw/ftcms%3Ab51b0bf4-b4fe-11e8-a1d8-15c2dd1280ff?source=next-article&fit=scale-down&quality=highest&width=700&dpr=2', title: 'US-China Trade War', 
+      text: "Trade wars are good, and easy to win. Donald Trump's breezy tweet of last..." },
+    { src: "https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/styles/full_width/public/media/images/20240810_20240822_seismo%2Bifg.png?itok=XMyolNz6", title: 'Volcanic Watch', text: "Since July 2024 activity, at Kīlauea has been punctuated by two periods of intense..." },
+    { src: "https://media.cnn.com/api/v1/images/stellar/prod/whatsapp-image-2024-09-13-at-8-55-21-am.jpg?q=w_1110,c_fill/f_webp", title: 'North Korea', text: "North Korea releases images of Kim Jong Un visiting a uranium enrichment site, giving rare glimpse..." },
+    { src: "https://media.cnn.com/api/v1/images/stellar/prod/gettyimages-2169500008.jpg?c=16x9&q=h_653,w_1160,c_fill/f_webp", title: 'Mexican Elections', text: "Mexican President Andrés Manuel López Obrador has long been critical of his country's..."},
+    { src: "https://media.cnn.com/api/v1/images/stellar/prod/credit-denise-baker-image-juststopoil-chrispcressie021-49.jpg?q=w_2000,c_fill/f_webp", title: 'Climate Change', text: "As right-wing rioters attacked communities with racist violence across parts of the UK last..." },
+    { src: "https://media.cnn.com/api/v1/images/stellar/prod/still-20942651-1577572-5999999999-still.jpg?c=16x9&q=h_653,w_1160,c_fill/f_webp", title: 'Voters', text: "Nearing the end of the annual Navajo Nation parade route last Saturday, the Arizona Republican..." },
   ];
 
-  const [popUpContent, setPopUpContent] = useState(null);
+  const [popupContent, setPopUpContent] = useState(null);
 
   const handleclick = (details) => {
     setPopUpContent(details);
@@ -28,7 +31,7 @@ const Grid = () => {
 
   return (
     <div className="grid-container">
-      <h1 className ="page-title">Single Source of Truth</h1> {}
+      <h1 className ="page-title">Recent Reads</h1> {}
       <h1 className="page-subtitle">Discovering Politics in an Unbiased Way</h1> {}
       <div className="grid">
       {items.map((item, index) => (
@@ -39,14 +42,14 @@ const Grid = () => {
         </button>
       ))}
     </div>
-    {popupContent && (
+    popupContent && (
         <div className="popup-overlay" onClick={handleclose}>
             <div className="popup-content" onClick={e => e.stopPropagation()}>
-                <span className="popup-close" onClick={handleClosePopup}>&times;</span>
+                <span className="popup-close" onClick={handleclose}>&times;</span>
                 <div>{popupContent}</div>
             </div>
         </div>
-      )}
+      )
     </div>
   );
 };

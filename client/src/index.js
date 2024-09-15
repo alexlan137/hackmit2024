@@ -7,6 +7,6 @@ import Grid from "./components/grid.js";
 const root = createRoot(document.getElementById("root"));
 root.render(
   <StrictMode>
-    <Grid />
+    <App />
   </StrictMode>
 );

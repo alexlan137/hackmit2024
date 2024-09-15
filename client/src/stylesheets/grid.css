@@ -65,3 +65,20 @@
     word-wrap: break-word;
     overflow-wrap: break-word;
 }
+
+.popup-overlay {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+}
+
+.popup-content {
+    background-color: whitesmoke;
+    padding: 20px;
+    border: 8px;
+    position: relative;
+}
+
+.popup-close {
+    position: absolute;
+}

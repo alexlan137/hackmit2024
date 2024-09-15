@@ -4,6 +4,7 @@
     padding: 20px 0; /* Vertical padding */
     text-align: center; /* Center align text */
     position: sticky; /* Position relative for any absolute positioning if needed */
+    bottom: 0;
   }
 
   .footer-content {

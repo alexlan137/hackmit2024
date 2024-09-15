@@ -5,6 +5,7 @@
     align-items: stretch;
     justify-content: center;
     height: 100%;
+
   }
 
   .row {
@@ -18,8 +19,8 @@
   .middle-column,
   .right-column {
     padding-top: 5vh;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -33,6 +34,7 @@
     flex: 1;
     background-color: #e8e8e8;
     width: 25%;
+    padding-top: 75px;
   }
 
   .middle-column {
@@ -42,7 +44,7 @@
   }
 
   .middle-column-title {
-    font-size: 40px;
+    font-size: 30px;
     font-weight: bold;
     color: #555555;
     margin-bottom: 10px;
@@ -51,8 +53,64 @@
   }
 
   .middle-column-subtitle {
-    font-size: 18px;
+    font-size: 15px;
     margin-bottom: 20px;
     text-align: center;
     color: #5d5d5d;
+  }
+
+  .right-column-title {
+    font-size: 1.2em;
+    color: #555555;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .right-subtitle-section {
+    margin-bottom: 20px;
+  }
+
+  .right-subtitle {
+    font-size: 1em;
+    color: #444;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+
+  .right-subtitle-text,
+  .hover-text {
+    font-size: 0.8em;
+    color: #666;
+    line-height: 1.5;
+    padding-bottom: 15px
+  }
+
+  .hr {
+    border: none; /* Remove default border */
+    border-top: 1px solid #858585; /* Create a dashed line */
+    height: 0; /* Set height to zero */
+    width: 90%;
+    margin: 20px auto;
+  }
+
+  .library-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .title-wrapper {
+    background-color: white;
+    padding: 5px 10px;
+    border-radius: 10px;
+    display: inline-block;
+  }
+
+  .hover-text {
+    transition: color 0.3s ease; /* Smooth transition effect */
+  }
+
+  .hover-text:hover {
+    color: #000000; /* Color on hover */
   }

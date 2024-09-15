@@ -13,6 +13,7 @@ import HomePage from "./HomePage.js";
 import Nav from "./nav.js";
 import Header from "./Header.jsx";
 import Footer from "./Footer.jsx";
+import Chat from "./Chat.jsx"
 
 const GOOGLE_CLIENT_ID = "363037912379-0hk5ir8ntacgscrv0j3a3vkn2d4l8eef.apps.googleusercontent.com";
 
@@ -45,10 +46,10 @@ const App = () => {
         <Nav loggedIn={Boolean(user._id)} handleLogin={handleLogin} handleLogout={handleLogout} />
         <Routes>
           <Route path="/" element={<HomePage loggedIn={Boolean(user._id)} user={user} />} />
+          <Route path="/chat" element={<Chat />} />
         </Routes>
         <Footer />
       </GoogleOAuthProvider>
-      <Footer />
     </BrowserRouter>
   );
 };

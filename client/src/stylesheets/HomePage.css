@@ -27,13 +27,14 @@
 
   .button {
     display: inline-block;
+    margin-top: 15px;
     padding: 10px 20px;
     background-color: #71797E;
     color: white;
     text-decoration: none;
     border-radius: 5px;
     font-size: 1rem;
-    width: 20vw;
+    width: 15vw;
     text-align: center;
 
   }

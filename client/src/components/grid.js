@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import '../stylesheets/grid.css';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; 
 
 const Grid = () => {
   const items = [
@@ -16,15 +16,12 @@ const Grid = () => {
     { src: "https://media.cnn.com/api/v1/images/stellar/prod/still-20942651-1577572-5999999999-still.jpg?c=16x9&q=h_653,w_1160,c_fill/f_webp", title: 'Voters', text: "Nearing the end of the annual Navajo Nation parade route last Saturday, the Arizona Republican..." },
   ];
 
+  const navigate = useNavigate();
   const [popupContent, setPopUpContent] = useState(null);
 
   const handleclick = (details) => {
-    <nav className="nav">
-      <ul>
-        <li><Link to="/">Article</Link></li>
-      </ul>
-    </nav>
-    // setPopUpContent(details);
+    setPopUpContent(details);
+    navigate('/article'); 
   };
 
   const handleclose = () => {
@@ -33,11 +30,11 @@ const Grid = () => {
 
   return (
     <div className="grid-container">
-      <h1 className ="page-title">Porfolio of Articles</h1> {}
-      <h1 className="page-subtitle">Center for thoughts & research</h1> {}
+      <h1 className ="page-title">Portfolio</h1> {}
+      <h1 className="page-subtitle">Saved articles & research</h1> {}
       <div className="grid">
       {items.map((item, index) => (
-        <button className="grid-item" onClick={() => handleclick(item.text)} key={index}>
+        <button className="grid-item" onClick={() => handleclick()} key={index}>
           <img src={item.src} alt={item.title} />
           <h3> {item.title} </h3>
           <p> {item.text} </p>

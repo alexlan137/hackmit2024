@@ -1,6 +1,6 @@
 const express = require("express");
 const auth = require("./auth.js");
-const utilities = require("utilities.js");
+const utilities = require("./utilities.js");
 
 const User = require("./models/user.js");
 const Chat = require("./models/chat.js");

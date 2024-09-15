@@ -1,14 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../stylesheets/Header.css'
+import logo from '../../dist/assets/ssot_logo_transparent.png';
 
 const Header = () => {
   return (
     <header className="header">
       <div className="logo">
-        <Link to="/">
-          <img src="../dist/favicon.ico" alt="Logo" />
-        </Link>
+      <img src={logo} alt="Company Logo" className="footer-logo" />
       </div>
       <nav className="nav">
         <ul>

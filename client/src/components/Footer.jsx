@@ -1,14 +1,12 @@
 import React from 'react';
-import logo from '../..dist/favicon.ico'; // Adjust the path as needed
 import '../stylesheets/Footer.css'; // We'll create this next
 
 const Footer = () => {
   return (
-    <footer className="footer">
-      <div className="footer-content">
-        <img src={logo} alt="Company Logo" className="footer-logo" />
-      </div>
-    </footer>
+    <div className="footer">
+        <h2 className="company-name">SSOT</h2>
+        <p className="copyright">© 2024</p>
+    </div>
   );
 };
 

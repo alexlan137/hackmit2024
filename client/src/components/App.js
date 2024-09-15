@@ -9,7 +9,7 @@ import "../utilities.css";
 
 import { get, post } from "../utilities.js";
 
-import Home from "./home.js";
+import HomePage from "./HomePage.js";
 import Nav from "./nav.js";
 import Header from "./Header.jsx"
 import Footer from "./Footer.jsx"
@@ -44,10 +44,11 @@ const App = () => {
       <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
         <Nav loggedIn={Boolean(user._id)} handleLogin={handleLogin} handleLogout={handleLogout} />
         <Routes>
-          <Route path="/" element={<Home loggedIn={Boolean(user._id)} user={user} />} />
+          <Route path="/" element={<HomePage loggedIn={Boolean(user._id)} user={user} />} />
         </Routes>
         <Footer />
       </GoogleOAuthProvider>
+      <Footer />
     </BrowserRouter>
   );
 };

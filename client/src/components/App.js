@@ -11,6 +11,8 @@ import { get, post } from "../utilities.js";
 
 import Home from "./home.js";
 import Nav from "./nav.js";
+import Grid from "./grid.js";
+import Article from "./article.js";
 
 const GOOGLE_CLIENT_ID = "363037912379-0hk5ir8ntacgscrv0j3a3vkn2d4l8eef.apps.googleusercontent.com";
 

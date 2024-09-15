@@ -1,0 +1,67 @@
+/* src/stylesheets/grid.css */
+.page-title {
+    text-align: left;
+    font-size: xx-large;
+    color: black;
+    padding: 5px;
+}
+
+.page-subtitle {
+    text-align: left;
+    font-size: large;
+    color: lightgrey;
+    padding: 20px;
+}
+
+.grid-container{
+    width: 80%;
+    background-color: white;
+    padding: 10%;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem; 
+    padding: 3rem;
+    background-color: white;
+    border-top: 50px solid white;
+}
+
+.grid-item {
+    border-radius: 12px; /* Square corners */
+    overflow: hidden;
+    width: 100%; /* Full width of grid cell */
+    display: flex; /* Flexbox for centering content */
+    flex-direction: column; /* Stack children vertically */
+    border: 1px solid lightgrey;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.grid-item img {
+    width: 200px;
+    height: 100%;
+    object-fit: cover; /* Ensure the image covers its area without distortion */
+}
+
+.grid-item-content {
+    padding: 10px;
+}
+
+.grid-item h3 {
+    margin: 0 0 8px;
+    font-size: 1rem;
+    color: black;
+    padding-top: 20px;
+    text-align: left
+}
+
+.grid-item p {
+    margin: 0;
+    font-size: 0.75rem; /* Adjust font size if needed */
+    color: grey;
+    text-align: left;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
